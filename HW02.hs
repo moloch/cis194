@@ -23,7 +23,10 @@ colors = [Red, Green, Blue, Yellow, Orange, Purple]
 
 -- Get the number of exact matches between the actual code and the guess
 exactMatches :: Code -> Code -> Int
-exactMatches a b = sum[if a == b then 1 else 0 | (a,b) <- (zip a b)]
+--exactMatches a b = sum[if a == b then 1 else 0 | (a,b) <- (zip a b)]
+exactMatches _ [] = 0
+exactMatches [] _ = 0
+exactMatches (x:xs) (y:ys) = fromEnum (x==y) + (exactMatches xs ys)
 
 -- Exercise 2 -----------------------------------------
 
